@@ -1,1 +1,23 @@
-<p>viewemp works!</p>
+<div class="container">
+    <h1 class="text-center">Employee Details</h1>
+
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let e of emparr">
+                <td>{{e.id}}</td>
+                <td>{{e.name}}</td>
+                <td>{{e.dept}}</td>
+                <td>{{e.salary}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
