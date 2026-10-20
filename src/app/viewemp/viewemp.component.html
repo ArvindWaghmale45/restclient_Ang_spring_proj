@@ -8,6 +8,7 @@
                 <th>Name</th>
                 <th>Department</th>
                 <th>Salary</th>
+                <th>Actions</th>
             </tr>
         </thead>
 
@@ -17,6 +18,10 @@
                 <td>{{e.name}}</td>
                 <td>{{e.dept}}</td>
                 <td>{{e.salary}}</td>
+                <td>
+                    <button class="btn btn-danger" (click)="delemp(e.id)">Delete</button>
+                    <button class="btn btn-warning" (click)="upemp(e.id)">Edit</button>
+                </td>
             </tr>
         </tbody>
     </table>

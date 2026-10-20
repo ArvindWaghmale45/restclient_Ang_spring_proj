@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { Employee } from '../model/employee';
 import { EmployeeService } from '../services/employee.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-viewemp',
@@ -12,16 +13,24 @@ import { EmployeeService } from '../services/employee.service';
 })
 export class ViewempComponent {
   emparr: Employee[] = []
-  constructor(private es: EmployeeService) {
+  constructor(private es: EmployeeService, private router: Router) { }
+  ngOnInit(): void {
+    this.fetchemps()
 
   }
   fetchemps() {
     this.es.getallemps().subscribe(data => {
-      this.emparr = data
+      if (data.length > 0) {
+        this.emparr = data
+      }
     })
   }
-  ngOnInit(): void {
-    this.fetchemps()
+  delemp(id: any) {
+    this.es.del(id).subscribe(data => {
+      this.fetchemps()
+    })
   }
-
+  upemp(id: any) {
+    this.router.navigate(['/upemp', id])
+  }
 }
